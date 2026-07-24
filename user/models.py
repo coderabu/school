@@ -15,3 +15,4 @@ class User(models.Model):
     password = models.CharField(max_length=10000)
     role = models.CharField(max_length=20, choices=ROLE, default='user')
 
+
