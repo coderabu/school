@@ -1,0 +1,181 @@
+/* Umumiy uslublar va fontlar */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f7faf8;
+    color: #121c24;
+}
+
+/* Asosiy konteyner */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar menyusi */
+.sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    border-right: 1px solid #eaefe9;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.logo h2 {
+    font-size: 24px;
+    color: #121c24;
+    font-weight: 700;
+}
+
+.logo h2 span {
+    color: #52b774; /* Saytdagi yashil rang */
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: #121c24;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 500;
+    border: 1.5px solid #121c24;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.menu-item:hover, .menu-item.active {
+    background-color: #52b774;
+    color: #ffffff;
+    border-color: #52b774;
+}
+
+/* Asosiy kontent qismi */
+.content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Yuqori panel va Qo'shish tugmasi */
+.content-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-add {
+    background-color: #52b774;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(82, 183, 116, 0.25);
+    transition: background-color 0.3s ease;
+}
+
+.btn-add:hover {
+    background-color: #439a60;
+}
+
+/* Kartochkalar paneli (Grid) */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+/* Har bir kartochka */
+.card {
+    background-color: #ffffff;
+    border: 1.5px solid #121c24;
+    border-radius: 18px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.card-info h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #121c24;
+}
+
+.card-info p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+/* Kartochkadagi amallar tugmalari (Yashil va Qizil) */
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Tahrirlash (Yashil tugma) */
+.btn-edit {
+    background-color: #52b774;
+}
+
+/* O'chirish (Qizil tugma) */
+.btn-delete {
+    background-color: #e74c3c;
+}
+
+/* Responsivlik (Mobil va planshetlar uchun) */
+@media (max-width: 900px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eaefe9;
+    }
+}
