@@ -4,371 +4,283 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clasrom - Find your Course</title>
-<link rel="stylesheet" href="{% static 'main/landing.css' %}">
+<title>Clasrom — Ta'lim markazingizni bir joydan boshqaring</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'main/landing.css' %}">
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="container header__inner">
-    <div class="logo">
-      <span class="logo__icon">🛡️</span>
-      <span class="logo__text">Clas<span class="accent">rom</span></span>
-    </div>
-    <nav class="nav">
-      <a href="#" class="nav__link active">Home</a>
-      <a href="#about" class="nav__link">About Us</a>
-      <a href="#courses" class="nav__link">Courses</a>
-      <a href="#portfolio" class="nav__link">Portfolio</a>
-      <a href="#testimonial" class="nav__link">Testimonial</a>
-      <a href="#contact" class="nav__link">Contact</a>
-      <a href="{% url 'accounts:login' %}" class="nav__link">Login</a>
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap">
+    <a href="#" class="logo"><span class="shield">🛡</span>Clas<span>rom</span></a>
+
+    <nav class="nav-links">
+      <a href="#imkoniyatlar">Imkoniyatlar</a>
+      <a href="#jarayon">Qanday ishlaydi</a>
+      <a href="#fikrlar">Fikrlar</a>
+      <a href="#aloqa">Aloqa</a>
     </nav>
 
+    <div class="nav-cta">
+      <a href="login.html" class="btn btn-ghost">Kirish</a>
+      <a href="#boshlash" class="btn btn-primary">Bepul boshlash</a>
+    </div>
+
+    <input type="checkbox" id="navCheck">
+    <label for="navCheck" class="nav-toggle">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </label>
+    <div class="nav-mobile">
+      <a href="#imkoniyatlar">Imkoniyatlar</a>
+      <a href="#jarayon">Qanday ishlaydi</a>
+      <a href="#fikrlar">Fikrlar</a>
+      <a href="#aloqa">Aloqa</a>
+      <a href="login.html" class="btn btn-ghost">Kirish</a>
+      <a href="#boshlash" class="btn btn-primary">Bepul boshlash</a>
+    </div>
   </div>
 </header>
 
-<!-- HERO -->
+<!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="container hero__inner">
-    <div class="hero__content">
-      <span class="badge">New <span>Lorem ipsum dolor sit amet, consectetur adipiscing.</span></span>
-      <h1 class="hero__title">Find your <span class="accent">Course</span><br> &amp; make sure goal.</h1>
-      <p class="hero__text">Your dream Courses is waiting for you. 👋</p>
-      <div class="hero__actions">
-        <button class="btn btn--primary">Get Started</button>
-        <button class="btn btn--play">
-          <span class="play-icon">▶</span> Play Video
-        </button>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>O'quv markazlar uchun CRM</div>
+      <h1>O'quvchi, o'qituvchi va to'lovlaringizni <em>bitta joydan</em> boshqaring.</h1>
+      <p class="lead">Clasrom — o'quv markazingiz uchun guruhlar, davomat, to'lov va oylik hisob-kitobini avtomatlashtiradigan boshqaruv tizimi. Qog'oz jurnal va Excel jadvallarga endi ehtiyoj yo'q.</p>
+      <div class="hero-actions">
+        <a href="#boshlash" class="btn btn-primary btn-lg">Bepul boshlash</a>
+        <a href="#jarayon" class="btn btn-ghost btn-lg">Qanday ishlaydi</a>
+      </div>
+      <div class="hero-avatars">
+        <div class="avatar-stack">
+          <span>AK</span><span>DY</span><span>ST</span><span>MR</span>
+        </div>
+        <div class="hero-note">120 dan ortiq o'quv markazi ishonadi</div>
       </div>
     </div>
-    <div class="hero__image">
-      <div class="hero__blob"></div>
-      <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80" alt="Student" class="hero__photo">
-    </div>
-  </div>
-</section>
 
-<!-- WHAT WE DO -->
-<section class="section" id="about">
-  <div class="container">
-    <div class="section__head">
-      <div>
-        <span class="eyebrow">What we do</span>
-        <h2 class="section__title">Our education system will give<br> you the perfect solution</h2>
-      </div>
-      <p class="section__desc">Lorem ipsum dolor sit amet, consectetur adipiscing. Duis vel risus id ligula ullamcorper sollicitudin. Mauris quis convallis nunc. Class aptent taciti sociosqu.</p>
-    </div>
+    <div class="hero-visual">
+      <div class="mock-blob"></div>
 
-    <div class="services">
-      <div class="service-card service-card--active">
-        <div class="service-icon service-icon--green">🏬</div>
-        <h3>Digital Marketing Solution &amp; Experience</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing. Nullam ut tincidunt massa.</p>
-        <a href="#" class="link-arrow">Learn More →</a>
-      </div>
-      <div class="service-card">
-        <div class="service-icon service-icon--purple">🔗</div>
-        <h3>UI / UX Deaign Solution &amp; Experience</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing. Nullam ut tincidunt massa.</p>
-        <a href="#" class="link-arrow">Learn More →</a>
-      </div>
-      <div class="service-card">
-        <div class="service-icon service-icon--orange">{ }</div>
-        <h3>Web and App Development Solution</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing. Nullam ut tincidunt massa.</p>
-        <a href="#" class="link-arrow">Learn More →</a>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="mock-panel mock-main">
+        <div class="mm-head">
+          <h4>O'qituvchilar</h4>
+          <span>4 ta</span>
+        </div>
 
-<!-- COURSE TYPES -->
-<section class="section">
-  <div class="container">
-    <div class="course-types">
-      <div class="course-types__text">
-        <span class="eyebrow">Join over 15,00+ tech pepole</span>
-        <h2 class="section__title">Various types of courses will<br> scale up your skills</h2>
-        <p class="section__desc">Lorem ipsum dolor sit amet, consectetur adipiscing. Duis vel risus id ligula ullamcorper sollicitudin. Mauris quis convallis nunc. Class aptent taciti sociosqu.</p>
-
-        <div class="steps">
-          <div class="step">
-            <div class="step-icon step-icon--green">✳️</div>
-            <h4>Create Account</h4>
-            <p>Lorem ipsum dolor sit amet Nullam.</p>
+        <div class="mm-row">
+          <div class="mm-person">
+            <div class="mm-av">AK</div>
+            <div><p>Aziz Karimov</p><span>Matematika</span></div>
           </div>
-          <div class="step">
-            <div class="step-icon step-icon--purple">✅</div>
-            <h4>Select Courses</h4>
-            <p>Lorem ipsum dolor sit amet Nullam.</p>
+          <div class="mm-icons">
+            <i class="e"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></i>
+            <i class="d"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></i>
           </div>
-          <div class="step">
-            <div class="step-icon step-icon--pink">✉️</div>
-            <h4>Confirmation Mail</h4>
-            <p>Lorem ipsum dolor sit amet Nullam.</p>
+        </div>
+
+        <div class="mm-row">
+          <div class="mm-person">
+            <div class="mm-av">DY</div>
+            <div><p>Dilnoza Yusupova</p><span>Fizika</span></div>
           </div>
-          <div class="step">
-            <div class="step-icon step-icon--yellow">👤</div>
-            <h4>Enjoy your Course</h4>
-            <p>Lorem ipsum dolor sit amet Nullam.</p>
+          <div class="mm-icons">
+            <i class="e"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></i>
+            <i class="d"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></i>
+          </div>
+        </div>
+
+        <div class="mm-row">
+          <div class="mm-person">
+            <div class="mm-av">ST</div>
+            <div><p>Sardor Toshpulatov</p><span>Ingliz tili</span></div>
+          </div>
+          <div class="mm-icons">
+            <i class="e"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></i>
+            <i class="d"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></i>
           </div>
         </div>
       </div>
 
-      <div class="course-types__image">
-        <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=600&q=80" alt="Student thumbs up">
+      <div class="mock-panel mock-stat s1">
+        <div class="ms-top">
+          <div class="ms-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+          <div class="ms-num">96%</div>
+        </div>
+        <div class="ms-label">Bugungi davomat</div>
+      </div>
+
+      <div class="mock-panel mock-stat s2">
+        <div class="ms-top">
+          <div class="ms-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          <div class="ms-num">3.4 mln</div>
+        </div>
+        <div class="ms-label">Bu oy yig'ilgan to'lov</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BEST TEACHERS -->
-<section class="section section--tinted">
-  <div class="container">
-    <div class="section__head">
-      <div>
-        <span class="eyebrow">Best teacher's</span>
-        <h2 class="section__title">Online courses form 150+ top<br> instructor</h2>
-      </div>
-      <p class="section__desc">Lorem ipsum dolor sit amet, consectetur adipiscing. Duis vel risus id ligula ullamcorper sollicitudin. Mauris quis convallis nunc. Class aptent taciti sociosqu.</p>
+<!-- ============ TRUST STRIP ============ -->
+<section class="strip">
+  <div class="wrap">
+    <div class="strip-item"><div class="num">120<span>+</span></div><div class="label">o'quv markazi</div></div>
+    <div class="strip-item"><div class="num">18<span>k+</span></div><div class="label">boshqarilayotgan o'quvchi</div></div>
+    <div class="strip-item"><div class="num">4.9<span>/5</span></div><div class="label">o'rtacha baho</div></div>
+    <div class="strip-item"><div class="num">40<span>%</span></div><div class="label">kamroq sarflangan vaqt</div></div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="features" id="imkoniyatlar">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="margin-left:auto;margin-right:auto;"><span class="dot"></span>Imkoniyatlar</div>
+      <h2>Markazingiz uchun kerakli hamma narsa</h2>
+      <p>O'qituvchidan tortib oylik hisobigacha — barchasi bitta tizimda, alohida jadval va daftarlarsiz.</p>
     </div>
 
-    <div class="teachers">
-      <div class="teacher-card">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Jaime Escalante" class="teacher-avatar">
-        <div>
-          <h4>Jaime Escalante</h4>
-          <span class="teacher-role">Digital Marketing</span>
-          <div class="teacher-meta"><span class="rating">4.8 ⭐ Instructor Rating</span></div>
-          <div class="teacher-stats">643,512 Students &nbsp; 33 Course</div>
-        </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>O'qituvchilar</h3>
+        <p>Har bir o'qituvchini biriktirilgan fan, guruh va dars jadvali bilan birga saqlang.</p>
       </div>
-      <div class="teacher-card">
-        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Anne Sullivan" class="teacher-avatar">
-        <div>
-          <h4>Anne Sullivan</h4>
-          <span class="teacher-role">UI Design</span>
-          <div class="teacher-meta"><span class="rating">4.7 ⭐ Instructor Rating</span></div>
-          <div class="teacher-stats">634,152 Students &nbsp; 35 Course</div>
-        </div>
+      <div class="feat-card">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg></div>
+        <h3>O'quvchilar</h3>
+        <p>Ro'yxatga olishdan tortib guruh almashtirishgacha — barcha o'quvchi ma'lumotlari bir joyda.</p>
       </div>
-      <div class="teacher-card">
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Marva Collins" class="teacher-avatar">
-        <div>
-          <h4>Marva Collins</h4>
-          <span class="teacher-role">UX Design</span>
-          <div class="teacher-meta"><span class="rating">4.6 ⭐ Instructor Rating</span></div>
-          <div class="teacher-stats">673,212 Students &nbsp; 34 Course</div>
-        </div>
+      <div class="feat-card">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h3>Davomat</h3>
+        <p>Har bir darsda bir necha bosishda davomatni belgilang, tarixini istalgan vaqt ko'ring.</p>
       </div>
-      <div class="teacher-card">
-        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Steve Wozniak" class="teacher-avatar">
-        <div>
-          <h4>Steve Wozniak</h4>
-          <span class="teacher-role">Graphic Design</span>
-          <div class="teacher-meta"><span class="rating">4.7 ⭐ Instructor Rating</span></div>
-          <div class="teacher-stats">643,512 Students &nbsp; 35 Course</div>
-        </div>
+      <div class="feat-card">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <h3>Guruhlar</h3>
+        <p>O'quvchilarni guruhlarga taqsimlang, band joylarni va jadvalni nazorat qiling.</p>
       </div>
-      <div class="teacher-card">
-        <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?w=100&q=80" alt="Peter Tabichi" class="teacher-avatar">
-        <div>
-          <h4>Peter Tabichi</h4>
-          <span class="teacher-role">Web Development</span>
-          <div class="teacher-meta"><span class="rating">4.7 ⭐ Instructor Rating</span></div>
-          <div class="teacher-stats">643,522 Students &nbsp; 37 Course</div>
-        </div>
+      <div class="feat-card">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>To'lovlar</h3>
+        <p>O'quvchi to'lovlarini kuzating, qarzdorlikni avtomatik hisoblang va eslatma yuboring.</p>
       </div>
-      <div class="teacher-card">
-        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&q=80" alt="Spike Lee" class="teacher-avatar">
-        <div>
-          <h4>Spike Lee</h4>
-          <span class="teacher-role">APP Development</span>
-          <div class="teacher-meta"><span class="rating">4.8 ⭐ Instructor Rating</span></div>
-          <div class="teacher-stats">643,212 Students &nbsp; 36 Course</div>
-        </div>
+      <div class="feat-card">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <h3>Oylik hisob-kitob</h3>
+        <p>O'qituvchilar oylik maoshini soatlar va o'quvchilar soniga qarab avtomatik hisoblang.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- POPULAR COURSES -->
-<section class="section" id="courses">
-  <div class="container">
-    <div class="section__head">
-      <div>
-        <span class="eyebrow">Popular courses</span>
-        <h2 class="section__title">Our most popular courses in<br> students</h2>
-      </div>
-      <p class="section__desc">Lorem ipsum dolor sit amet, consectetur adipiscing. Duis vel risus id ligula ullamcorper sollicitudin. Mauris quis convallis nunc. Class aptent taciti sociosqu.</p>
+<!-- ============ HOW IT WORKS ============ -->
+<section class="steps" id="jarayon">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="margin-left:auto;margin-right:auto;"><span class="dot"></span>Qanday ishlaydi</div>
+      <h2>Uch qadamda ishga tushiring</h2>
+      <p>Sozlash uchun dasturchi yoki maxsus texnik yordam shart emas.</p>
     </div>
 
-    <div class="courses-grid">
-      <div class="course-card">
-        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=500&q=80" alt="UI Design">
-        <div class="course-card__body">
-          <h3>UI Design</h3>
-          <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <div class="course-meta">🕓 22 hr 30 min &nbsp; 📚 64 Lessons &nbsp; 📈 Progress chart</div>
-          <button class="btn btn--primary btn--small">Learn More →</button>
-        </div>
+    <div class="step-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Markazingizni ro'yxatdan o'tkazing</h3>
+        <p>Ta'lim markazingiz nomi va aloqa ma'lumotlarini kiritib, bir necha daqiqada boshlang.</p>
       </div>
-      <div class="course-card">
-        <img src="https://images.unsplash.com/photo-1517292987719-0369a794ec0f?w=500&q=80" alt="UX Design">
-        <div class="course-card__body">
-          <h3>UX Design</h3>
-          <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <div class="course-meta">🕓 22 hr 30 min &nbsp; 📚 64 Lessons &nbsp; 📈 Progress chart</div>
-          <a href="#" class="link-arrow">Learn More →</a>
-        </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>O'qituvchi va guruhlarni qo'shing</h3>
+        <p>Mavjud o'qituvchi, fan va guruhlaringizni tizimga kiriting yoki jadvaldan import qiling.</p>
       </div>
-      <div class="course-card">
-        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=500&q=80" alt="Digital Marketing">
-        <div class="course-card__body">
-          <h3>Digital Marketing</h3>
-          <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <div class="course-meta">🕓 22 hr 30 min &nbsp; 📚 64 Lessons &nbsp; 📈 Progress chart</div>
-          <a href="#" class="link-arrow">Learn More →</a>
-        </div>
-      </div>
-      <div class="course-card">
-        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&q=80" alt="Graphic Design">
-        <div class="course-card__body">
-          <h3>Graphic Design</h3>
-          <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <div class="course-meta">🕓 22 hr 30 min &nbsp; 📚 64 Lessons &nbsp; 📈 Progress chart</div>
-          <a href="#" class="link-arrow">Learn More →</a>
-        </div>
-      </div>
-      <div class="course-card">
-        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&q=80" alt="Web Development">
-        <div class="course-card__body">
-          <h3>Web Development</h3>
-          <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <div class="course-meta">🕓 22 hr 30 min &nbsp; 📚 64 Lessons &nbsp; 📈 Progress chart</div>
-          <a href="#" class="link-arrow">Learn More →</a>
-        </div>
-      </div>
-      <div class="course-card">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80" alt="APP Development">
-        <div class="course-card__body">
-          <h3>APP Development</h3>
-          <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <div class="course-meta">🕓 22 hr 30 min &nbsp; 📚 64 Lessons &nbsp; 📈 Progress chart</div>
-          <a href="#" class="link-arrow">Learn More →</a>
-        </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Davomat va to'lovni boshqaring</h3>
+        <p>Har kuni davomat belgilang, to'lovlarni kuzating — hisobotlar o'zi shakllanadi.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<section class="section section--tinted" id="testimonial">
-  <div class="container">
-    <div class="section__head">
-      <div>
-        <span class="eyebrow">Testimonial</span>
-        <h2 class="section__title">What our students say about us<br> in platform</h2>
-      </div>
-      <p class="section__desc">Lorem ipsum dolor sit amet, consectetur adipiscing. Duis vel risus id ligula ullamcorper sollicitudin. Mauris quis convallis nunc. Class aptent taciti sociosqu.</p>
-    </div>
-
-    <div class="testimonials">
-      <div class="testimonial-card">
-        <div class="testimonial-head">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Jack Andraka">
-          <div>
-            <h4>Jack Andraka</h4>
-            <span>Digital Marketing</span>
-          </div>
-        </div>
-        <p class="quote">"Lorem ipsum dolor sit amet, consectetur adipiscing. Vivamus at est sed elit efficitur gravida. Mauris arutrum dolor vel molestie augue.</p>
-        <span class="testimonial-date">This week</span>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-head">
-          <img src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=100&q=80" alt="Jacob Barnett">
-          <div>
-            <h4>Jacob Barnett</h4>
-            <span>Graphic Design</span>
-          </div>
-        </div>
-        <p class="quote">"Lorem ipsum dolor sit amet, consectetur adipiscing. Vivamus at est sed elit efficitur gravida. Mauris arutrum dolor vel molestie augue.</p>
-        <span class="testimonial-date">This week</span>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-head">
-          <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=100&q=80" alt="Colin Carlson">
-          <div>
-            <h4>Colin Carlson</h4>
-            <span>Web Development</span>
-          </div>
-        </div>
-        <p class="quote">"Lorem ipsum dolor sit amet, consectetur adipiscing. Vivamus at est sed elit efficitur gravida. Mauris arutrum dolor vel molestie augue.</p>
-        <span class="testimonial-date">This week</span>
-      </div>
+<!-- ============ TESTIMONIAL ============ -->
+<section class="quote-sec" id="fikrlar">
+  <div class="wrap">
+    <blockquote>"Har oy oylik va to'lovlarni Excel'da hisoblab, kechqurunlarim ketardi. Clasrom'ga o'tgandan keyin bu ish 10 daqiqaga tushdi."</blockquote>
+    <div class="quote-author">
+      <div class="qa-av">MR</div>
+      <div><p>Malika Rashidova</p><span>"Bilim Bog'i" o'quv markazi direktori</span></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta">
-  <div class="container cta__inner">
-    <h2>Business Goal Achived With<br> Creative Teams.</h2>
-    <form class="subscribe">
-      <input type="email" placeholder="Your Email Address" required>
-      <button type="submit" class="btn btn--primary">Subscribe</button>
-    </form>
+<!-- ============ CTA BANNER ============ -->
+<section class="cta-banner" id="boshlash">
+  <div class="wrap">
+    <div class="cta-card">
+      <h2>Markazingizni bugundan boshqarishni osonlashtiring</h2>
+      <p>Email manzilingizni qoldiring — sizga tizimni sozlashda yordam beramiz.</p>
+      <form class="cta-form" method="post">
+        <input type="email" name="email" placeholder="Email manzilingiz" required>
+        <button type="submit" class="btn btn-primary">Ariza qoldirish</button>
+      </form>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer" id="contact">
-  <div class="container footer__inner">
-    <div class="footer__brand">
-      <div class="logo">
-        <span class="logo__icon">🛡️</span>
-        <span class="logo__text">Clas<span class="accent">rom</span></span>
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="aloqa">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo"><span class="shield">🛡</span>Clas<span>rom</span></a>
+        <p>O'quv markazlar uchun o'qituvchi, o'quvchi, davomat va to'lovlarni boshqarish tizimi.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v1.5A5.99 5.99 0 0 1 16 8Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
       </div>
-      <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
-      <div class="socials">
-        <a href="#">f</a>
-        <a href="#">✆</a>
-        <a href="#">◎</a>
-        <a href="#">in</a>
+
+      <div class="footer-col">
+        <h5>Kompaniya</h5>
+        <ul>
+          <li><a href="#">Biz haqimizda</a></li>
+          <li><a href="#">Aloqa</a></li>
+          <li><a href="#">Yordam</a></li>
+          <li><a href="#">Narxlar</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Imkoniyatlar</h5>
+        <ul>
+          <li><a href="#imkoniyatlar">O'qituvchilar</a></li>
+          <li><a href="#imkoniyatlar">Davomat</a></li>
+          <li><a href="#imkoniyatlar">To'lovlar</a></li>
+          <li><a href="#imkoniyatlar">Oylik hisob</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Yordam kerakmi?</h5>
+        <ul>
+          <li><a href="#">Ko'p so'raladigan savollar</a></li>
+          <li><a href="#">Bog'lanish</a></li>
+          <li><a href="login.html">Tizimga kirish</a></li>
+          <li><a href="#boshlash">Bepul sinab ko'rish</a></li>
+        </ul>
       </div>
     </div>
-    <div class="footer__col">
-      <h4>Our Company</h4>
-      <a href="#">About Us</a>
-      <a href="#">Contact</a>
-      <a href="#">Support</a>
-      <a href="#">Latest Blog</a>
-      <a href="#">Pricing</a>
+
+    <div class="footer-bottom">
+      <span>© 2026 Clasrom. Barcha huquqlar himoyalangan.</span>
+      <span>Toshkent, O'zbekiston</span>
     </div>
-    <div class="footer__col">
-      <h4>Feature</h4>
-      <a href="#">Data Analytics</a>
-      <a href="#">Email Marketing</a>
-      <a href="#">Seo Ranking</a>
-      <a href="#">Website Growth</a>
-      <a href="#">Affiliate</a>
-    </div>
-    <div class="footer__col">
-      <h4>Need Help?</h4>
-      <a href="#">Find a Job?</a>
-      <a href="#">Looking Consultant?</a>
-      <a href="#">Download App</a>
-      <a href="#">Create a Account</a>
-      <a href="#">Much More</a>
-    </div>
-  </div>
-  <div class="footer__bottom">
-    © 2021 All Rights Reserved By : Soykot Talukdar
   </div>
 </footer>
 

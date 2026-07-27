@@ -68,7 +68,7 @@ class AddUserView(View):
             form.save()
             return redirect('accounts:teacher_list')
         context = {'form': form}
-        return render(request, 'admin/add_user.html', context)
+        return render(request, 'ceo/teacher/add_user.html', context)
 
 class UpdateTeacher(View):
     def get(self, request, pk):
@@ -90,7 +90,7 @@ class DeleteTeacher(View):
     def post(self, request, pk):
         teacher = get_object_or_404(User, pk=pk)
         teacher.delete()
-        return redirect('accounts:teacher_list')
+        return redirect('accounts:teachers')
 
 
 

@@ -4,198 +4,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foydalanuvchi qo'shish</title>
-<link rel="stylesheet" href="{% static 'main/landing.css' %}">
+<title>Clasrom | Yangi o'qituvchi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-    .form-row{
-  display: flex;
-  gap: 14px;
-}
-.form-row .form-group{
-  flex: 1;
-}
-  .auth-page{
-    min-height: 100vh;
-    background: var(--bg-tint);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 24px;
-  }
-  .auth-box{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 1000px;
-    width: 100%;
-    background: #fff;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,.08);
-  }
-
-  /* CHAP - yashil panel */
-  .auth-side{
-    background: linear-gradient(rgba(31,143,87,.75), rgba(31,143,87,.75)),
-                url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=700&q=80') center/cover;
-    padding: 44px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    color: #fff;
-    min-height: 560px;
-  }
-  .auth-side__badge{
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255,255,255,.15);
-    border-radius: 30px;
-    padding: 10px 18px;
-    font-size: 13px;
-    margin-bottom: 24px;
-    width: fit-content;
-  }
-  .auth-side__badge b{ font-weight: 700; }
-  .auth-side h1{
-    font-size: 30px;
-    font-weight: 800;
-    line-height: 1.3;
-    margin-bottom: 14px;
-  }
-  .auth-side p{
-    font-size: 14px;
-    opacity: .9;
-  }
-
-  /* ONG - forma */
-  .auth-form{
-    padding: 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .auth-form .eyebrow{ margin-bottom: 6px; }
-  .auth-form h2{
-    font-size: 26px;
-    font-weight: 800;
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-  .auth-form p.sub{
-    color: var(--text-gray);
-    font-size: 14px;
-    margin-bottom: 28px;
-  }
-  .form-group{ margin-bottom: 16px; }
-  .form-group label{
-    display: block;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: var(--text-dark);
-  }
-  .form-group input,
-  .form-group select{
-    width: 100%;
-    padding: 13px 18px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    font-family: inherit;
-    font-size: 14px;
-    background: var(--bg-tint);
-  }
-  .form-group input:focus,
-  .form-group select:focus{
-    outline: 2px solid var(--green);
-    border-color: transparent;
-    background: #fff;
-  }
-  .form-error{
-    color: var(--pink);
-    font-size: 12px;
-    margin-top: 4px;
-  }
-  .auth-form .btn--primary{
-    width: 100%;
-    padding: 15px;
-    font-size: 15px;
-    margin-top: 10px;
-    border-radius: 30px;
-  }
-  .back-link{
-    display: inline-block;
-    margin-top: 20px;
-    font-size: 13px;
-    color: var(--text-gray);
-    text-align: center;
-  }
-  .back-link:hover{ color: var(--green); }
-
-  @media (max-width: 800px){
-    .auth-box{ grid-template-columns: 1fr; }
-    .auth-side{ display: none; }
-  }
-</style>
+<link rel="stylesheet" href="{% static 'ceo/teacher/teacher.css' %}">
 </head>
-<body>
+<body class="auth-page">
 
-<div class="auth-page">
-  <div class="auth-box">
+  <div class="auth-card">
 
-    <div class="auth-side">
-      <div class="auth-side__badge">
-        <span>👋</span> <b>Welcome</b>&nbsp;— yangi a'zo qo'shing
-      </div>
-      <h1>Find your Course &amp; make sure goal.</h1>
-      <p>Yangi o'qituvchi yoki o'quvchi qo'shib, ta'lim jarayonini davom ettiring.</p>
-    </div>
+    <a href="admin.html" class="auth-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Orqaga
+    </a>
 
-    <div class="auth-form">
-      <span class="eyebrow">Admin panel</span>
-      <h2>Yangi foydalanuvchi qo'shish</h2>
-      <p class="sub">Quyidagi maydonlarni to'ldirib, tizimga yangi a'zo qo'shing.</p>
+    <h1 class="auth-title">Yangi O'qituvchi</h1>
 
-      <form method="post">
+    <form class="auth-form" method="post">
     {% csrf_token %}
-
-    <div class="form-row">
-      <div class="form-group">
-        <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
-        {{ form.first_name }}
-        {% if form.first_name.errors %}
-          <div class="form-error">{{ form.first_name.errors.0 }}</div>
-        {% endif %}
+      <div class="auth-field">
+        <input type="text" name="username" placeholder="Username">
       </div>
-      <div class="form-group">
-        <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
-        {{ form.last_name }}
-        {% if form.last_name.errors %}
-          <div class="form-error">{{ form.last_name.errors.0 }}</div>
-        {% endif %}
+
+      <div class="auth-field">
+        <input type="text" name="first_name" placeholder="First name">
       </div>
-    </div>
 
-    {% for field in form %}
-      {% if field.name != 'first_name' and field.name != 'last_name' %}
-        <div class="form-group">
-          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-          {{ field }}
-          {% if field.errors %}
-            <div class="form-error">{{ field.errors.0 }}</div>
-          {% endif %}
-        </div>
-      {% endif %}
-    {% endfor %}
+      <div class="auth-field">
+        <input type="text" name="last_name" placeholder="Last name">
+      </div>
 
-    <button type="submit" class="btn btn--primary">Qo'shish</button>
-</form>
-      <a href="{% url 'accounts:main_page' %}" class="back-link">← Bosh sahifaga qaytish</a>
-    </div>
+      <div class="auth-field">
+        <input type="text" name="phone" placeholder="Phone">
+      </div>
 
+      <div class="auth-field">
+        <select name="role">
+          <option value="" selected disabled>Role</option>
+          <option value="ceo">Ceo</option>
+          <option value="teacher">O'qituvchi</option>
+          <option value="student">O'quvchi</option>
+        </select>
+      </div>
+
+      <div class="auth-field">
+        <input type="password" name="password" placeholder="Password">
+      </div>
+
+      <button type="submit" class="btn btn-add auth-submit">Saqlash</button>
+
+    </form>
   </div>
-</div>
 
 </body>
 </html>
