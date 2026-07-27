@@ -6,7 +6,7 @@ class Subject(models.Model):
     created_at = models.DateField(auto_now=True)
 
 class Groups(models.Model):
-    teacher = models.ForeignKey(User,on_delete=models.CASCADE)
+    teacher = models.ForeignKey(User, on_delete=models.CASCADE, related_name='teacher_groups')
     subject = models.ForeignKey(Subject,on_delete=models.CASCADE)
     created_at = models.DateField(auto_created=True)
     start_time = models.DateField(auto_created=False)

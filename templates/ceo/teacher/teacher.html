@@ -7,13 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clasrom - Admin Panel</title>
     <link rel="stylesheet" href="{% static 'ceo/teacher/teacher.css' %}">
-    <!-- Font Awesome ikonkalari (O'zgartirish va O'chirish tugmalari uchun) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <div class="admin-container">
-        <!-- Chap tomondagi menyu (Sidebar) -->
         <aside class="sidebar">
             <div class="logo">
                 <h2><span>Clas</span>rom</h2>
@@ -29,51 +27,40 @@
             </nav>
         </aside>
 
-        <!-- O'ng tomondagi asosiy qism (Main Content) -->
         <main class="content">
-            <!-- Yuqori qism: Tugma -->
             <div class="content-header">
-                <button class="btn-add">+ Qo'shish</button>
+                <a href="{% url 'accounts:add_user' %}">Qo'shish</a>
             </div>
 
-            <!-- Kartochkalar grid joylashuvi -->
-            <div class="cards-grid">
+          <div class="cards-grid">
 
-                <!-- 1-kartochka (DB dynamic loop uchun) -->
-                <div class="card">
-                    <div class="card-info">
-                        <h3>Ali Valiyev</h3>
-                        <p><strong>Mutaxassislik:</strong> Matematika</p>
-                        <p><strong>Tel:</strong> +998 90 123 45 67</p>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn-action btn-edit" title="Tahrirlash">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-                        <button class="btn-action btn-delete" title="O'chirish">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 2-kartochka (DB dynamic loop uchun) -->
-                <div class="card">
-                    <div class="card-info">
-                        <h3>Eshmat Toshmatov</h3>
-                        <p><strong>Mutaxassislik:</strong> Ingliz tili</p>
-                        <p><strong>Tel:</strong> +998 91 987 65 43</p>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn-action btn-edit" title="Tahrirlash">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-                        <button class="btn-action btn-delete" title="O'chirish">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-
+    {% for teacher in teachers %}
+    <div class="card">
+        <a href="{% url 'accounts:teacher_detail' teacher.pk %}" class="card-info-link">
+            <div class="card-info">
+                <h3>{{ teacher.first_name }} {{ teacher.last_name }}</h3>
+                <p><strong>Username:</strong> {{ teacher.username }}</p>
+                <p><strong>Tel:</strong> {{ teacher.phone }}</p>
             </div>
+        </a>
+        <div class="card-actions">
+            <a href="{% url 'accounts:update_teacher' teacher.pk %}" class="btn-action btn-edit" title="Tahrirlash">
+                <i class="fa-solid fa-pen"></i>
+            </a>
+           <form method="post" action="{% url 'accounts:delete_teacher' teacher.pk %}" style="display:inline;" onsubmit="return confirm('Rostdan ham o\'chirmoqchimisiz?');">
+    {% csrf_token %}
+    <button type="submit" class="btn-action btn-delete" title="O'chirish">
+        <i class="fa-solid fa-trash"></i>
+    </button>
+</form>
+        </div>
+    </div>
+    {% empty %}
+    <p>Hozircha o'qituvchilar qo'shilmagan.</p>
+    {% endfor %}
+
+</div>
+
         </main>
     </div>
 

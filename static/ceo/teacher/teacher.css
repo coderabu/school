@@ -1,4 +1,10 @@
-/* Umumiy uslublar va fontlar */
+.card-info-link{
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  flex: 1;
+  cursor: pointer;
+}/* Umumiy uslublar va fontlar */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 * {

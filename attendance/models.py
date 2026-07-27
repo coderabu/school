@@ -1,5 +1,5 @@
 from django.db import models
-from django.conf import settings
+from accounts.models import User
 from groups.models import Groups
 
 class Attendance(models.Model):
@@ -7,7 +7,7 @@ class Attendance(models.Model):
         ('present', 'Present'),
         ('absent', 'Absent'),
     )
-    student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, limit_choices_to={'role': 'student'})
+    student = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'role': 'student'})
     group = models.ForeignKey(Groups, on_delete=models.CASCADE)
     date = models.DateField()
     status = models.CharField(max_length=55, choices=Status)
