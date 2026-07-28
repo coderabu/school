@@ -3,66 +3,80 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clasrom - Admin Panel</title>
-    <link rel="stylesheet" href="{% static 'ceo/teacher/teacher.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom | Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'ceo/teacher/teacher.css' %}">
 </head>
 <body>
 
-    <div class="admin-container">
-        <aside class="sidebar">
-            <div class="logo">
-                <h2><span>Clas</span>rom</h2>
-            </div>
-            <nav class="menu">
-                <a href="#" class="menu-item active">O'qituvchi</a>
-                <a href="#" class="menu-item">O'quvchi</a>
-                <a href="#" class="menu-item">Fan</a>
-                <a href="#" class="menu-item">Guruh</a>
-                <a href="#" class="menu-item">Davomat</a>
-                <a href="#" class="menu-item">To'lov</a>
-                <a href="#" class="menu-item">Oylik</a>
-            </nav>
-        </aside>
+<aside class="sidebar">
+  <div class="logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
+  <nav class="nav">
+    <a href="#" class="nav-item active"><span class="dot"></span>O'qituvchi</a>
+    <a href="#" class="nav-item"><span class="dot"></span>O'quvchi</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Fan</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Guruh</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Davomat</a>
+    <a href="#" class="nav-item"><span class="dot"></span>To'lov</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Oylik</a>
+  </nav>
+  <div class="sidebar-foot">© 2026 Clasrom Admin</div>
+</aside>
 
-        <main class="content">
-            <div class="content-header">
-                <a href="{% url 'accounts:add_user' %}">Qo'shish</a>
-            </div>
-
-          <div class="cards-grid">
-
-    {% for teacher in teachers %}
-    <div class="card">
-        <a href="{% url 'accounts:teacher_detail' teacher.pk %}" class="card-info-link">
-            <div class="card-info">
-                <h3>{{ teacher.first_name }} {{ teacher.last_name }}</h3>
-                <p><strong>Username:</strong> {{ teacher.username }}</p>
-                <p><strong>Tel:</strong> {{ teacher.phone }}</p>
-            </div>
-        </a>
-        <div class="card-actions">
-            <a href="{% url 'accounts:update_teacher' teacher.pk %}" class="btn-action btn-edit" title="Tahrirlash">
-                <i class="fa-solid fa-pen"></i>
-            </a>
-           <form method="post" action="{% url 'accounts:delete_teacher' teacher.pk %}" style="display:inline;" onsubmit="return confirm('Rostdan ham o\'chirmoqchimisiz?');">
-    {% csrf_token %}
-    <button type="submit" class="btn-action btn-delete" title="O'chirish">
-        <i class="fa-solid fa-trash"></i>
+<main class="main">
+  <div class="topbar">
+    <div>
+      <h1>O'qituvchilar</h1>
+      <p>Barcha o'qituvchilar ro'yxati</p>
+    </div>
+      <a href="{% url 'accounts:add_user' %}" class="card-info-link">
+          <button class="btn btn-add" type="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Qo'shish
     </button>
-</form>
+      </a>
+  </div>
+
+  <div class="search-row">
+    <input class="search-input" type="text" placeholder="Qidirish...">
+  </div>
+
+  <div class="grid">
+
+    <!-- Bitta karta namunasi. Ma'lumotlar SQL/backenddan shu strukturada takrorlanadi -->
+      {% for t in teachers %}
+    <div class="card">
+        <a href="{% url 'accounts:teacher_detail' t.pk %}" class="card-info-link">
+      <div class="card-info">
+        <div class="avatar">AK</div>
+        <div class="card-text">
+          <div class="card-title">{{ t.fisrt_name }}</div>
+          <div class="card-sub">{{ t.last_name }}</div>
         </div>
-    </div>
-    {% empty %}
-    <p>Hozircha o'qituvchilar qo'shilmagan.</p>
-    {% endfor %}
+      </div>
+      <div class="card-actions">
+          <a href="{% url 'accounts:update_teacher' t.pk %}">
+              <button class="icon-btn edit" type="button" title="Tahrirlash">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </button>
+          </a>
 
-</div>
-
-        </main>
+          <a href="{% url 'accounts:delete_teacher' t.pk %}">
+               <button class="icon-btn del" type="button" title="O'chirish">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+        </button>
+          </a>
+      </div>
+            </a>
     </div>
+      {% endfor %}
+    <!-- /karta -->
+
+  </div>
+</main>
 
 </body>
 </html>

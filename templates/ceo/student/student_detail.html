@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom | O'quvchi profili</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'ceo/student/student_detail.css' %}">
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
+  <nav class="nav">
+    <a href="#" class="nav-item"><span class="dot"></span>O'qituvchi</a>
+    <a href="#" class="nav-item active"><span class="dot"></span>O'quvchi</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Fan</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Guruh</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Davomat</a>
+    <a href="#" class="nav-item"><span class="dot"></span>To'lov</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Oylik</a>
+  </nav>
+  <div class="sidebar-foot">© 2026 Clasrom Admin</div>
+</aside>
+
+<main class="main">
+
+  <div class="sd-card">
+
+    <!-- Yuqori qism: info + edit/delete -->
+    <div class="sd-top">
+      <div class="sd-avatar">AB</div>
+      <div class="sd-info">
+        <h2 class="sd-name">Ism Familiya</h2>
+        <div class="sd-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18 2 2 0 0 1 5.07 3h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.9a2 2 0 0 1-.45 2.11L9.09 11a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0 1 22 17.92Z"/></svg>
+          <span>Phone nomer 1</span>
+        </div>
+        <div class="sd-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18 2 2 0 0 1 5.07 3h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.9a2 2 0 0 1-.45 2.11L9.09 11a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0 1 22 17.92Z"/></svg>
+          <span>Phone nomer 2</span>
+        </div>
+        <div class="sd-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span>Username</span>
+        </div>
+        <div class="sd-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          <span>Guruh nomi</span>
+        </div>
+      </div>
+      <div class="sd-actions">
+        <a href="student_edit.html" class="icon-btn edit" title="Tahrirlash">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </a>
+        <a href="student_list.html" class="icon-btn del" title="O'chirish">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Pastki qism: guruhga biriktirish tugmasi -->
+    <div class="sd-footer">
+      <a href="#" class="btn btn-primary">Guruhga biriktirish</a>
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+</html>

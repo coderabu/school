@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom | Yangi o'quvchi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% staitc ceo/student/add_student.css' %}">
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
+  <nav class="nav">
+    <a href="#" class="nav-item"><span class="dot"></span>O'qituvchi</a>
+    <a href="#" class="nav-item active"><span class="dot"></span>O'quvchi</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Fan</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Guruh</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Davomat</a>
+    <a href="#" class="nav-item"><span class="dot"></span>To'lov</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Oylik</a>
+  </nav>
+  <div class="sidebar-foot">© 2026 Clasrom Admin</div>
+</aside>
+
+<main class="main">
+
+  <div class="sa-card">
+
+    <div class="sa-field">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="">
+    </div>
+
+    <div class="sa-field">
+      <label>First Name</label>
+      <input type="text" name="first_name" placeholder="">
+    </div>
+
+    <div class="sa-field">
+      <label>Last Name</label>
+      <input type="text" name="last_name" placeholder="">
+    </div>
+
+    <div class="sa-field">
+      <label>Phone</label>
+      <input type="text" name="phone" placeholder="">
+    </div>
+
+    <div class="sa-footer">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+</html>

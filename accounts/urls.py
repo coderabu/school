@@ -3,6 +3,8 @@ from .views import (main_page,
     LoginView, teacher_list,TeacherDetailView,
     AddUserView,UpdateTeacher,DeleteTeacher
 )
+from .views import student_list
+
 app_name = 'accounts'
 urlpatterns = [
     path('', main_page, name='main_page'),
@@ -13,4 +15,5 @@ urlpatterns = [
     path('users/add/', AddUserView.as_view(), name='add_user'),
     # path('students/', StudentView.as_view(), name='student_page'),
     path('teacher/delete/<int:pk>/', DeleteTeacher.as_view(), name='delete_teacher'),
+    path('accounts/student/', student_list, name='student')
 ]

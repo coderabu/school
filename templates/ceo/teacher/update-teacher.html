@@ -4,108 +4,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clasrom - O'qituvchini tahrirlash</title>
-<link rel="stylesheet" href="{% static 'ceo/teacher/update_teacher.css' %}">
+<title>Clasrom | O'qituvchini tahrirlash</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'ceo/teacher/update_teacher.css' %}">
 </head>
-<body>
+<body class="auth-page">
 
-<div class="dashboard">
+  <div class="auth-card">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="logo">
-      <span class="logo__icon">🛡️</span>
-      <span class="logo__text">Clas<span class="accent">rom</span></span>
-    </div>
+    <a href="admin.html" class="auth-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Orqaga
+    </a>
 
-    <nav class="sidebar-nav">
-      <a href="#" class="sidebar-link active">O'qituvchi</a>
-      <a href="#" class="sidebar-link">O'quvchi</a>
-      <a href="#" class="sidebar-link">Fan</a>
-      <a href="#" class="sidebar-link">Guruh</a>
-      <a href="#" class="sidebar-link">Davomat</a>
-      <a href="#" class="sidebar-link">To'lov</a>
-      <a href="#" class="sidebar-link">Oylik</a>
-    </nav>
-  </aside>
+    <h1 class="auth-title">O'qituvchini tahrirlash</h1>
 
-  <!-- CONTENT -->
-  <main class="content">
-    <div class="content__head">
-      <h1 class="content__title">O'qituvchini tahrirlash</h1>
-      <a href="{% url 'accounts:teacher_detail' teacher.pk %}" class="btn btn--outline btn--small">← Ortga</a>
-    </div>
+    <form class="auth-form" method="post">
 
-    <div class="form-layout">
-
-      <div class="form-card">
-        <span class="eyebrow">Ma'lumotlarni yangilash</span>
-        <h2 class="form-card__title">{{ teacher.first_name }} {{ teacher.last_name }}</h2>
-        <p class="form-card__text">O'qituvchi ma'lumotlarini o'zgartiring va saqlang.</p>
-
-        <form class="teacher-form"method="POST">
-          {% csrf_token %}
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="first_name">Ism</label>
-              <input type="text" id="first_name" name="first_name" value="{{ teacher.first_name }}" placeholder="Ismi" required>
-            </div>
-            <div class="form-group">
-              <label for="last_name">Familiya</label>
-              <input type="text" id="last_name" name="last_name" value="{{ teacher.last_name }}" placeholder="Familiyasi" required>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="username">Foydalanuvchi nomi</label>
-            <input type="text" id="username" name="username" value="{{ teacher.username }}" placeholder="username" required>
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Telefon raqam</label>
-            <input type="tel" id="phone" name="phone" value="{{ teacher.phone }}" placeholder="+998 90 123 45 67" required>
-          </div>
-
-          <div class="form-actions">
-            <a href="#" class="btn btn--outline btn--danger btn--full">O'chirish</a>
-            <button type="submit" class="btn btn--primary btn--full">Saqlash</button>
-          </div>
-        </form>
+      <div class="auth-field">
+        <!-- value="{{ teacher.username }}" -->
+        <input type="text" name="username" placeholder="Username" value="">
       </div>
 
-      <div class="form-side">
-        <div class="form-side__top">
-          <span class="badge">Tahrirlash</span>
-          <div class="form-side__avatar">{{ teacher.first_name|slice:":1" }}{{ teacher.last_name|slice:":1" }}</div>
-          <h3>{{ teacher.first_name }} {{ teacher.last_name }}</h3>
-          <p class="form-side__role">{{ teacher.subject }}</p>
-        </div>
-
-        <div class="form-side__stats">
-          <div class="stat">
-            <span class="stat__value">{{ teacher.students.count|default:"0" }}</span>
-            <span class="stat__label">O'quvchi</span>
-          </div>
-          <div class="stat">
-            <span class="stat__value">{{ teacher.groups.count|default:"0" }}</span>
-            <span class="stat__label">Guruh</span>
-          </div>
-        </div>
-
-        <ul class="form-side__list">
-          <li>✓ Foydalanuvchi nomi noyob bo'lishi kerak</li>
-          <li>✓ Telefon raqamni to'g'ri formatda kiriting</li>
-          <li>✓ O'zgarishlar darhol saqlanadi</li>
-        </ul>
+      <div class="auth-field">
+        <!-- value="{{ teacher.first_name }}" -->
+        <input type="text" name="first_name" placeholder="First name" value="">
       </div>
 
-    </div>
-  </main>
+      <div class="auth-field">
+        <!-- value="{{ teacher.last_name }}" -->
+        <input type="text" name="last_name" placeholder="Last name" value="">
+      </div>
 
-</div>
+      <div class="auth-field">
+        <!-- value="{{ teacher.phone }}" -->
+        <input type="text" name="phone" placeholder="Phone" value="">
+      </div>
+
+      <div class="auth-field">
+        <!-- value="{{ teacher.role }}" -->
+        <select name="role">
+          <option value="" disabled>Role</option>
+          <option value="admin">Admin</option>
+          <option value="teacher">O'qituvchi</option>
+          <option value="student">O'quvchi</option>
+        </select>
+      </div>
+
+      <div class="auth-field">
+        <input type="password" name="password" placeholder="Yangi parol (o'zgartirmasangiz bo'sh qoldiring)">
+      </div>
+
+      <div class="edit-actions">
+        <a href="admin.html" class="btn btn-cancel">Bekor qilish</a>
+        <button type="submit" class="btn btn-save-edit">Saqlash</button>
+      </div>
+
+    </form>
+  </div>
 
 </body>
 </html>

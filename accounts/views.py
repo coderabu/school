@@ -90,7 +90,7 @@ class DeleteTeacher(View):
     def post(self, request, pk):
         teacher = get_object_or_404(User, pk=pk)
         teacher.delete()
-        return redirect('accounts:teacher_list')
+        return redirect('accounts:teachers')
 
 
 
@@ -102,13 +102,13 @@ class DeleteTeacher(View):
 
 
 
-# def student_list(request):
-#     students = User.objects.filter(role='student')
-#     context = {
-#         'students':students
-#     }
-#     return render(request, 'ceo/student/student.html',context)
-#
+def student_list(request):
+    students = User.objects.filter(role='student')
+    context = {
+        'students':students
+    }
+    return render(request, 'ceo/student/student.html',context)
+
 # class StudentDetail(View):
 #     def get(self,request,pk):
 #         students = get_object_or_404(User, pk=pk)
