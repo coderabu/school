@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom | O'quvchilar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'ceo/student/student.css' %}">
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
+  <nav class="nav">
+    <a href="#" class="nav-item"><span class="dot"></span>O'qituvchi</a>
+    <a href="#" class="nav-item active"><span class="dot"></span>O'quvchi</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Fan</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Guruh</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Davomat</a>
+    <a href="#" class="nav-item"><span class="dot"></span>To'lov</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Oylik</a>
+  </nav>
+  <div class="sidebar-foot">© 2026 Clasrom Admin</div>
+</aside>
+
+<main class="main">
+
+  <!-- ===== STAT CARDS ===== -->
+  <div class="sl-stats">
+    <div class="sl-stat">
+      <div class="sl-stat-label">Umumiy soni</div>
+      <div class="sl-stat-num">—</div>
+    </div>
+    <div class="sl-stat">
+      <div class="sl-stat-label">Bu oyga to'lov qilganlar</div>
+      <div class="sl-stat-num">—</div>
+    </div>
+    <div class="sl-stat">
+      <div class="sl-stat-label">Bu oyga to'lov qilmaganlar</div>
+      <div class="sl-stat-num">—</div>
+    </div>
+    <a href="add_student.html" class="btn btn-add sl-add">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Qo'shish
+    </a>
+  </div>
+
+  <!-- ===== TABLE ===== -->
+  <div class="sl-table-wrap">
+    <div class="sl-table-head">
+      <span class="sl-col-id">id.</span>
+      <span class="sl-col-name">Ism / Familiya</span>
+    </div>
+
+    <!-- Bitta andoza qator — SQL danbilan takrorlanadi -->
+    <div class="sl-row">
+      <span class="sl-col-id">1</span>
+      <span class="sl-col-name">First name Last name</span>
+      <div class="sl-row-actions">
+        <a href="edit_student.html" class="icon-btn edit" title="Tahrirlash">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </a>
+        <a href="#" class="icon-btn del" title="O'chirish">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <!-- /andoza -->
+
+  </div>
+
+</main>
+
+</body>
+</html>

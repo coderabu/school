@@ -4,118 +4,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clasrom - O'qituvchi</title>
-<link rel="stylesheet" href="{% static 'ceo/teacher/teacher_detail.css' %}">
+<title>Clasrom | O'qituvchi profili</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'ceo/teacher/teacher_detail.css' %}">
 </head>
 <body>
 
-<div class="dashboard">
+<aside class="sidebar">
+  <div class="logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
+  <nav class="nav">
+    <a href="#" class="nav-item active"><span class="dot"></span>O'qituvchi</a>
+    <a href="#" class="nav-item"><span class="dot"></span>O'quvchi</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Fan</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Guruh</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Davomat</a>
+    <a href="#" class="nav-item"><span class="dot"></span>To'lov</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Oylik</a>
+  </nav>
+  <div class="sidebar-foot">© 2026 Clasrom Admin</div>
+</aside>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="logo">
-      <span class="logo__icon">🛡️</span>
-      <span class="logo__text">Clas<span class="accent">rom</span></span>
-    </div>
+<main class="main">
 
-    <nav class="sidebar-nav">
-      <a href="#" class="sidebar-link active">O'qituvchi</a>
-      <a href="#" class="sidebar-link">O'quvchi</a>
-      <a href="#" class="sidebar-link">Fan</a>
-      <a href="#" class="sidebar-link">Guruh</a>
-      <a href="#" class="sidebar-link">Davomat</a>
-      <a href="#" class="sidebar-link">To'lov</a>
-      <a href="#" class="sidebar-link">Oylik</a>
-    </nav>
-  </aside>
-
-  <!-- CONTENT -->
-  <main class="content">
-    <div class="content__head">
-      <h1 class="content__title">O'qituvchi</h1>
-      <a href="{% url 'accounts:teacher_list' %}" class="btn btn--outline btn--small">← Ortga</a>
-    </div>
-
-    <!-- PROFILE CARD -->
-    <div class="profile-card">
-      <div class="profile-card__main">
-        <div class="profile-card__avatar">{{ teacher.first_name|slice:":1" }}{{ teacher.last_name|slice:":1" }}</div>
-        <div class="profile-card__info">
-          <h2>{{ teacher.first_name }} {{ teacher.last_name }}</h2>
-          <div class="profile-card__meta">
-            <span>👤 {{ teacher.username }}</span>
-            <span>📞 {{ teacher.phone }}</span>
+  <!-- ===== INFO CARD ===== -->
+  <div class="profile-card">
+    <div class="profile-info">
+      <div class="profile-avatar">AK</div>
+      <div class="profile-meta">
+        <h2 class="profile-name">Ism Familiya</h2>
+        <div class="profile-rows">
+          <div class="profile-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span>Username</span>
+          </div>
+          <div class="profile-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18 2 2 0 0 1 5.07 3h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.9a2 2 0 0 1-.45 2.11L9.09 11a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0 1 22 17.92Z"/></svg>
+            <span>Phone</span>
           </div>
         </div>
       </div>
-      <div class="profile-card__actions">
-        <form method="post" action="{% url 'accounts:delete_teacher' teacher.pk %}" style="display:inline;" onsubmit="return confirm('Rostdan ham o\'chirmoqchimisiz?');">
-    {% csrf_token %}
-    <button type="submit" class="btn-action btn-delete" title="O'chirish">
-        <i class="fa-solid fa-trash"></i>
-    </button>
-</form>
-        <a href="{% url 'accounts:update_teacher' teacher.pk %}" class="btn btn--primary btn--small">Tahrirlash</a>
-      </div>
     </div>
-
-    <!-- TABS -->
-    <div class="tabs">
-      <button type="button" class="tab-btn active" data-tab="students">O'quvchilari</button>
-      <button type="button" class="tab-btn" data-tab="groups">Guruhlar</button>
+    <div class="profile-actions">
+      <a href="edit.html" class="icon-btn edit" title="Tahrirlash">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      </a>
+      <a href="admin.html" class="icon-btn del" title="O'chirish">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+      </a>
     </div>
+  </div>
 
-    <!-- DATA PANEL: STUDENTS -->
-    <div class="data-panel" data-panel="students">
-      {% for student in teacher.students.all %}
-      <div class="data-row">
-        <div class="data-row__avatar">{{ student.first_name|slice:":1" }}{{ student.last_name|slice:":1" }}</div>
-        <div class="data-row__info">
-          <h4>{{ student.first_name }} {{ student.last_name }}</h4>
-          <span>{{ student.phone }}</span>
-        </div>
-      </div>
-      {% empty %}
-      <p class="empty-state">Hozircha o'quvchilar biriktirilmagan.</p>
-      {% endfor %}
-    </div>
+  <!-- ===== TABS ===== -->
+  <div class="detail-tabs">
+    <a href="#oquvchilar" class="detail-tab active">O'quvchilari</a>
+    <a href="#guruhlar" class="detail-tab">Guruhlar</a>
+  </div>
 
-    <!-- DATA PANEL: GROUPS -->
-    <div class="data-panel" data-panel="groups" hidden>
-      {% for group in teacher.groups.all %}
-      <div class="data-row">
-        <div class="data-row__avatar">{{ group.name|slice:":2" }}</div>
-        <div class="data-row__info">
-          <h4>{{ group.name }}</h4>
-          <span>{{ group.students.count }} o'quvchi</span>
-        </div>
-      </div>
-      {% empty %}
-      <p class="empty-state">Hozircha guruhlar biriktirilmagan.</p>
-      {% endfor %}
-    </div>
-  </main>
+  <!-- ===== TABLE AREA ===== -->
+  <div class="detail-table-wrap">
+    <table class="detail-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ism Familiya</th>
+          <th>Guruh</th>
+          <th>Tel</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Ma'lumotlar SQL dan shu <tr> strukturasida chiqadi -->
+        <tr>
+          <td>1</td>
+          <td>
+            <div class="t-person">
+              <div class="t-av">JA</div>
+              <span>Ism Familiya</span>
+            </div>
+          </td>
+          <td><span class="t-badge">Guruh nomi</span></td>
+          <td>+998 -- --- -- --</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="table-empty">Ma'lumotlar to'plami</div>
+  </div>
 
-</div>
-
-<script>
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.data-panel');
-
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const target = btn.dataset.tab;
-      panels.forEach(panel => {
-        panel.hidden = panel.dataset.panel !== target;
-      });
-    });
-  });
-</script>
+</main>
 
 </body>
 </html>
