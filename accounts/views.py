@@ -29,7 +29,7 @@ class LoginView(View):
                     if user.role == 'ceo':
                         return redirect('accounts:teacher_list')
                     elif user.role == 'teacher':
-                        return redirect('accounts:teacher_list')
+                        return redirect('teacher_page')
                     elif user.role == 'student':
                         return redirect('student_page')
                 else:
@@ -68,7 +68,7 @@ class AddUserView(View):
             form.save()
             return redirect('accounts:teacher_list')
         context = {'form': form}
-        return render(request, 'admin/add_user.html', context)
+        return render(request, 'ceo/teacher/add_user.html', context)
 
 class UpdateTeacher(View):
     def get(self, request, pk):

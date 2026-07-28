@@ -18,3 +18,4 @@ class GroupStudent(models.Model):
     group = models.ForeignKey(Groups,on_delete=models.CASCADE)
     created_at = models.DateField(auto_created=True)
 
+
