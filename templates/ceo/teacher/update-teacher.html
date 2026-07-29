@@ -9,60 +9,74 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'ceo/teacher/update_teacher.css' %}">
 </head>
-<body class="auth-page">
+<body>
 
-  <div class="auth-card">
+  <!-- SIDEBAR (Menyu) -->
+  <aside class="sidebar">
+    <div class="logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
+    <nav class="nav">
+      <a href="{% url 'accounts:teacher_list' %}" class="nav-item active"><span class="dot"></span>O'qituvchi</a>
+      <a href="{% url 'accounts:student' %}" class="nav-item"><span class="dot"></span>O'quvchi</a>
+      <a href="{% url 'groups:subject_list' %}" class="nav-item"><span class="dot"></span>Fan</a>
+      <a href="{% url 'groups:group_list' %}" class="nav-item"><span class="dot"></span>Guruh</a>
+      <a href="#" class="nav-item"><span class="dot"></span>Davomat</a>
+      <a href="#" class="nav-item"><span class="dot"></span>To'lov</a>
+      <a href="#" class="nav-item"><span class="dot"></span>Oylik</a>
+    </nav>
+    <div class="sidebar-foot">© 2026 Clasrom Admin</div>
+  </aside>
 
-    <a href="admin.html" class="auth-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-      Orqaga
-    </a>
+  <!-- ASOSIY QISM -->
+  <main class="main">
+    <div class="auth-card">
 
-    <h1 class="auth-title">O'qituvchini tahrirlash</h1>
+      <a href="{% url 'accounts:teacher_list' %}" class="auth-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        Orqaga
+      </a>
 
-    <form class="auth-form" method="post">
+      <h1 class="auth-title">O'qituvchini tahrirlash</h1>
 
-      <div class="auth-field">
-        <!-- value="{{ teacher.username }}" -->
-        <input type="text" name="username" placeholder="Username" value="">
-      </div>
+      <form class="auth-form" method="post">
+        {% csrf_token %}
 
-      <div class="auth-field">
-        <!-- value="{{ teacher.first_name }}" -->
-        <input type="text" name="first_name" placeholder="First name" value="">
-      </div>
+        <div class="auth-field">
+          <input type="text" name="username" placeholder="Username" value="{{ teacher.username }}">
+        </div>
 
-      <div class="auth-field">
-        <!-- value="{{ teacher.last_name }}" -->
-        <input type="text" name="last_name" placeholder="Last name" value="">
-      </div>
+        <div class="auth-field">
+          <input type="text" name="first_name" placeholder="First name" value="{{ teacher.first_name }}">
+        </div>
 
-      <div class="auth-field">
-        <!-- value="{{ teacher.phone }}" -->
-        <input type="text" name="phone" placeholder="Phone" value="">
-      </div>
+        <div class="auth-field">
+          <input type="text" name="last_name" placeholder="Last name" value="{{ teacher.last_name }}">
+        </div>
 
-      <div class="auth-field">
-        <!-- value="{{ teacher.role }}" -->
-        <select name="role">
-          <option value="" disabled>Role</option>
-          <option value="admin">Admin</option>
-          <option value="teacher">O'qituvchi</option>
-          <option value="student">O'quvchi</option>
-        </select>
-      </div>
+        <div class="auth-field">
+          <input type="text" name="phone" placeholder="Phone" value="{{ teacher.phone }}">
+        </div>
 
-      <div class="auth-field">
-        <input type="password" name="password" placeholder="Yangi parol (o'zgartirmasangiz bo'sh qoldiring)">
-      </div>
+        <div class="auth-field">
+          <select name="role">
+            <option value="" disabled>Role</option>
+            <option value="admin" {% if teacher.role == 'admin' %}selected{% endif %}>Admin</option>
+            <option value="teacher" {% if teacher.role == 'teacher' %}selected{% endif %}>O'qituvchi</option>
+            <option value="student" {% if teacher.role == 'student' %}selected{% endif %}>O'quvchi</option>
+          </select>
+        </div>
 
-      <div class="edit-actions">
-        <a href="admin.html" class="btn btn-cancel">Bekor qilish</a>
-        <button type="submit" class="btn btn-save-edit">Saqlash</button>
-      </div>
+        <div class="auth-field">
+          <input type="password" name="password" placeholder="Yangi parol (o'zgartirmasangiz bo'sh qoldiring)">
+        </div>
 
-    </form>
-  </div>
+        <div class="edit-actions">
+          <a href="{% url 'accounts:teacher_list' %}" class="btn btn-cancel">Bekor qilish</a>
+          <button type="submit" class="btn btn-save-edit">Saqlash</button>
+        </div>
+
+      </form>
+    </div>
+  </main>
 
 </body>
 </html>
