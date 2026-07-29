@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom | Guruhlarim</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'teacher/teacher.css' %}">
+</head>
+<body>
+
+  <div class="teacher-layout">
+    <!-- Sidebar -->
+    <aside class="teacher-sidebar">
+      <div class="sidebar-logo"><span>🛡</span> Clasrom</div>
+      <nav style="display: flex; flex-direction: column; gap: 8px;">
+        <a href="{% url 'teacher:student_list' %}" class="nav-link">O'quvchilarim</a>
+        <a href="#" class="nav-link active">Guruhlarim</a>
+        <a href="#" class="nav-link">Fanlarim</a>
+        <a href="#" class="nav-link">Davomat</a>
+        <a href="{% url 'teacher:profile' %}" class="nav-link">Profilim</a>
+      </nav>
+    </aside>
+
+    <!-- Main Section -->
+    <main class="teacher-main">
+      <h1 class="page-title">Guruhlarim</h1>
+
+<div class="groups-grid">
+  {% for group in groups %}
+  <div class="group-card">
+    <div>
+      <div class="group-name">{{ group.name }}</div>
+      <div class="group-info">Fan: {{ group.subject.name }}</div>
+      <div class="group-info">Vaqti: {{ group.start_time|time:"H:00" }} - {{ group.end_time|time:"H:00" }}</div>
+      <!-- Bazadan o'quvchilar sonini chiqarish -->
+      <div class="group-info" style="color: var(--green); margin-top: 8px; font-weight: 500;">
+        O'quvchilar: {{ group.student_count.count }} ta
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p style="color: var(--muted-light);">Sizda hozircha guruhlar mavjud emas.</p>
+  {% endfor %}
+</div>
+
+</body>
+</html>

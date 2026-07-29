@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom | Profilim</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'teacher/teacher.css' %}">
+<style>
+  /* Asosiy kontent kartasini kengaytirish va to'ldirish */
+  .content-card {
+    max-width: 100% !important;
+    width: 100%;
+  }
+  .profile-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+  }
+  .stat-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+  .stat-box h3 {
+    font-size: 14px;
+    color: var(--muted-light);
+    margin-bottom: 8px;
+  }
+  .stat-box .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .profile-info-group {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 25px;
+  }
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 14px;
+  }
+  .info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .info-label {
+    font-size: 13px;
+    color: var(--muted-light);
+  }
+  .info-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .groups-breakdown {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .group-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 14.5px;
+  }
+  .group-row:last-child {
+    border-bottom: none;
+  }
+</style>
+</head>
+<body>
+
+  <div class="teacher-layout">
+    <!-- Sidebar -->
+    <aside class="teacher-sidebar">
+      <div class="sidebar-logo"><span>🛡</span> Clasrom</div>
+      <nav style="display: flex; flex-direction: column; gap: 8px;">
+        <a href="{% url 'teacher:student_list' %}" class="nav-link">O'quvchilarim</a>
+        <a href="{% url 'teacher:teacher_page' %}" class="nav-link">Guruhlarim</a>
+        <a href="#" class="nav-link">Fanlarim</a>
+        <a href="#" class="nav-link">Davomat</a>
+        <a href="{% url 'teacher:profile' %}" class="nav-link active">Profilim</a>
+      </nav>
+    </aside>
+
+    <!-- Main Section -->
+    <main class="teacher-main">
+      <h1 class="page-title">Profilim</h1>
+
+      <div class="content-card">
+
+        <!-- Ism va Familiya -->
+        <h2 style="font-size: 24px; margin-bottom: 20px; color: #fff;">{{ teacher.first_name }} {{ teacher.last_name }}</h2>
+
+        <!-- Statistik bloklar -->
+        <div class="profile-stats">
+          <div class="stat-box">
+            <h3>Guruhlar soni</h3>
+            <div class="stat-value">{{ groups|length }}</div>
+          </div>
+          <div class="stat-box">
+            <h3>Holat</h3>
+            <div class="stat-value" style="font-size: 18px; color: var(--green); margin-top: 6px;">Faol o'qituvchi</div>
+          </div>
+        </div>
+
+        <!-- Shaxsiy ma'lumotlar -->
+        <div class="profile-info-group">
+          <div class="info-item">
+            <span class="info-label">Telefon / Username</span>
+            <span class="info-value">@{{ teacher.username }}</span>
+          </div>
+        </div>
+
+        <!-- Har bir guruh va o'quvchilar soni -->
+        <div class="groups-breakdown">
+          <h3 style="font-size: 16px; margin-bottom: 14px; color: #fff;">Guruhlar va o'quvchilar soni</h3>
+          <div>
+            {% for group in groups %}
+              <div class="group-row">
+                <span style="color: #fff; font-weight: 500;">{{ group.subject.name }} ({{ group.days }})</span>
+                <span style="color: var(--green); font-weight: 600;">{{ group.student_count.count }} ta o'quvchi</span>
+              </div>
+            {% empty %}
+              <p style="color: var(--muted-light); font-size: 14px;">Hozircha guruhlar mavjud emas.</p>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

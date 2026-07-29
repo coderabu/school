@@ -15,10 +15,10 @@
 <aside class="sidebar">
   <div class="logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
   <nav class="nav">
-    <a href="#" class="nav-item"><span class="dot"></span>O'qituvchi</a>
-    <a href="#" class="nav-item active"><span class="dot"></span>O'quvchi</a>
-    <a href="#" class="nav-item"><span class="dot"></span>Fan</a>
-    <a href="#" class="nav-item"><span class="dot"></span>Guruh</a>
+    <a href="{% url 'accounts:teacher_list' %}" class="nav-item"><span class="dot"></span>O'qituvchi</a>
+    <a href="{% url 'accounts:student' %}" class="nav-item"><span class="dot"></span>O'quvchi</a>
+    <a href="{% url 'groups:subject_list' %}" class="nav-item"><span class="dot"></span>Fan</a>
+    <a href="{% url 'groups:group_list' %}" class="nav-item active"><span class="dot"></span>Guruh</a>
     <a href="#" class="nav-item"><span class="dot"></span>Davomat</a>
     <a href="#" class="nav-item"><span class="dot"></span>To'lov</a>
     <a href="#" class="nav-item"><span class="dot"></span>Oylik</a>

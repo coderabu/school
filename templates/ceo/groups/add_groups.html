@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom | Yangi guruh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'ceo/teacher/teacher.css' %}">
+</head>
+<body class="auth-page">
+
+  <div class="auth-card" style="max-width: 440px;">
+
+    <div class="auth-logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
+
+    <a href="{% url 'groups:group_list' %}" class="auth-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Orqaga
+    </a>
+
+    <h1 class="auth-title">Yangi Guruh</h1>
+
+    <form class="auth-form" method="post">
+      {% csrf_token %}
+
+            <div class="auth-field">
+        <input type="text" name="name" placeholder="Matematika-101" value="{{ form.name.value|default_if_none:'' }}" required autocomplete="off">
+      </div>
+
+      <!-- O'qituvchini tanlash -->
+      <div class="auth-field">
+        <select name="teacher" required>
+          <option value="" selected disabled>O'qituvchini tanlang</option>
+          {% for teacher in teachers %}
+            <option value="{{ teacher.id }}" {% if form.teacher.value|stringformat:"s" == teacher.id|stringformat:"s" %}selected{% endif %}>
+              {{ teacher.first_name }} {{ teacher.last_name }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Fanni tanlash -->
+      <div class="auth-field">
+        <select name="subject" required>
+          <option value="" selected disabled>Fanni tanlang</option>
+          {% for subject in subjects %}
+            <option value="{{ subject.id }}" {% if form.subject.value|stringformat:"s" == subject.id|stringformat:"s" %}selected{% endif %}>
+              {{ subject.name }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="auth-field">
+        <input type="text" name="days" placeholder="Kunlar (masalan: Dush/Chor/Jum)" value="{{ form.days.value|default_if_none:'' }}" required autocomplete="off">
+      </div>
+
+      <div class="auth-field">
+        <input type="time" name="start_time" value="{{ form.start_time.value|default_if_none:'' }}" required title="Boshlanish vaqti">
+      </div>
+
+      <div class="auth-field">
+        <input type="time" name="end_time" value="{{ form.end_time.value|default_if_none:'' }}" required title="Tugash vaqti">
+      </div>
+
+      <button type="submit" class="btn btn-add auth-submit">Saqlash</button>
+
+    </form>
+  </div>
+
+</body>
+</html>

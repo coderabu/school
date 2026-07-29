@@ -29,7 +29,7 @@ class LoginView(View):
                     if user.role == 'ceo':
                         return redirect('accounts:teacher_list')
                     elif user.role == 'teacher':
-                        return redirect('teacher_page')
+                        return redirect('teacher:teacher_page')
                     elif user.role == 'student':
                         return redirect('student_page')
                 else:
@@ -95,8 +95,6 @@ class DeleteTeacher(View):
 
 
 
-
-
 # ============================ Student Section ============================
 
 
@@ -109,35 +107,35 @@ def student_list(request):
     }
     return render(request, 'ceo/student/student.html',context)
 
-# class StudentDetail(View):
-#     def get(self,request,pk):
-#         students = get_object_or_404(User, pk=pk)
-#         context = {
-#             'students': students,
-#         }
-#         return render(request, 'ceo/teacher/teacher-detail.html', context)
-#
-# class UpdateStudent(View):
-#     def get(self, request, pk):
-#         student = get_object_or_404(User, pk=pk)
-#         form = EditTeacherForm(instance=student)
-#         context = {'form': form, 'student': student}
-#         return render(request, 'ceo/student/update-student.html', context)
-#
-#     def post(self, request, pk):
-#         student = get_object_or_404(User, pk=pk)
-#         form = EditTeacherForm(request.POST, instance=student)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('accounts:teacher_list')
-#         context = {'form': form, 'student': student}
-#         return render(request, 'ceo/student/update-student.html', context)
-#
-# class DeleteStudent(View):
-#     def post(self, request, pk):
-#         student = get_object_or_404(User, pk=pk)
-#         student.delete()
-#         return redirect('accounts:teacher_list')
+class StudentDetail(View):
+    def get(self,request,pk):
+        students = get_object_or_404(User, pk=pk)
+        context = {
+            'students': students,
+        }
+        return render(request, 'ceo/student/student_detail.html', context)
+
+class UpdateStudent(View):
+    def get(self, request, pk):
+        student = get_object_or_404(User, pk=pk)
+        form = EditTeacherForm(instance=student)
+        context = {'form': form, 'students': student}
+        return render(request, 'ceo/student/edit_student.html', context)
+
+    def post(self, request, pk):
+        student = get_object_or_404(User, pk=pk)
+        form = EditTeacherForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:student')
+        context = {'form': form, 'students': student}
+        return render(request, 'ceo/student/edit_student.html', context)
+
+class DeleteStudent(View):
+    def post(self, request, pk):
+        student = get_object_or_404(User, pk=pk)
+        student.delete()
+        return redirect('accounts:student')
 
 
 

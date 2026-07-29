@@ -6,16 +6,17 @@ class Subject(models.Model):
     created_at = models.DateField(auto_now=True)
 
 class Groups(models.Model):
+    name = models.CharField(max_length=55)
     teacher = models.ForeignKey(User, on_delete=models.CASCADE, related_name='teacher_groups')
     subject = models.ForeignKey(Subject,on_delete=models.CASCADE)
-    created_at = models.DateField(auto_created=True)
-    start_time = models.DateField(auto_created=False)
-    end_time = models.DateField(auto_created=False)
+    created_at = models.DateField(auto_now_add=True)
+    start_time = models.TimeField()
+    end_time = models.TimeField()
     days = models.CharField(max_length=55)
 
 class GroupStudent(models.Model):
     student = models.ForeignKey(User,on_delete=models.CASCADE)
-    group = models.ForeignKey(Groups,on_delete=models.CASCADE)
-    created_at = models.DateField(auto_created=True)
+    group = models.ForeignKey(Groups,on_delete=models.CASCADE,related_name='student_count')
+    created_at = models.DateField(auto_now_add=True)
 
 

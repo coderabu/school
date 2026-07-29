@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom | O'quvchilarim</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'teacher/teacher.css' %}">
+<style>
+  /* Header va qidiruv qismi dizayni */
+  .top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  .welcome-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .user-badge {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--green);
+    font-size: 14px;
+  }
+
+  /* Qidiruv formasi */
+  .search-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .search-input {
+    flex: 1;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+  }
+  .search-input:focus {
+    border-color: var(--green);
+  }
+  .search-btn {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    padding: 0 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .search-btn:hover {
+    background: var(--green-dark);
+  }
+
+  /* Jadval dizayni */
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .student-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+  }
+  .student-table th {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--muted-light);
+    font-weight: 600;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .student-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: #fff;
+  }
+  .student-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .badge-group {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--green);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+  <div class="teacher-layout">
+    <!-- Sidebar -->
+    <aside class="teacher-sidebar">
+      <div class="sidebar-logo"><span>🛡</span> Clasrom</div>
+      <nav style="display: flex; flex-direction: column; gap: 8px;">
+        <a href="{% url 'teacher:student_list' %}" class="nav-link active">O'quvchilarim</a>
+        <a href="{% url 'teacher:teacher_page' %}" class="nav-link">Guruhlarim</a>
+        <a href="#" class="nav-link">Fanlarim</a>
+        <a href="#" class="nav-link">Davomat</a>
+        <a href="{% url 'teacher:profile' %}" class="nav-link">Profilim</a>
+      </nav>
+    </aside>
+
+    <!-- Main Section -->
+    <main class="teacher-main">
+
+      <!-- Yuqori qism (Xush kelibsiz va Ism) -->
+      <div class="top-header">
+        <h1 class="welcome-text">Xush kelibsiz, o'qituvchi!</h1>
+        <div class="user-badge">{{ request.user.first_name|default:request.user.username }}</div>
+      </div>
+
+      <!-- Asosiy kontent kartasi -->
+      <div class="content-card" style="max-width: 100% !important;">
+        <h2 style="font-size: 18px; margin-bottom: 20px; color: #fff;">O'quvchilarim</h2>
+
+        <!-- Qidiruv paneli -->
+        <form method="get" class="search-form">
+          <input type="text" name="q" value="{{ q }}" placeholder="Ism yoki familiya bo'yicha qidirish..." class="search-input">
+          <button type="submit" class="search-btn">Qidiruv</button>
+        </form>
+
+        <!-- Jadval -->
+        <div class="table-container">
+          <table class="student-table">
+            <thead>
+              <tr>
+                <th style="width: 60px;">Id</th>
+                <th>Ism</th>
+                <th>Familiya</th>
+                <th>Telefon</th>
+                <th>Guruhi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in results %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.student.first_name }}</td>
+                <td>{{ item.student.last_name }}</td>
+                <td style="color: var(--muted-light);">{{ item.student.phone|default:"+998..." }}</td>
+                <td>
+                  <span class="badge-group">{{ item.group.name }}</span>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="5" style="text-align: center; color: var(--muted-light); padding: 30px;">
+                  Hozircha o'quvchilar topilmadi.
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

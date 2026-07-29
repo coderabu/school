@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom | Guruhga o'quvchi qo'shish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'ceo/teacher/teacher.css' %}">
+</head>
+<body class="auth-page">
+
+  <div class="auth-card" style="max-width: 440px;">
+
+    <div class="auth-logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
+
+    <a href="{% url 'groups:group_detail' group.pk %}" class="auth-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Orqaga
+    </a>
+
+    <h1 class="auth-title">Guruhga o'quvchi qo'shish</h1>
+
+    <form class="auth-form" method="post">
+      {% csrf_token %}
+
+      <div class="auth-field">
+        <select name="student" required>
+          <option value="" selected disabled>O'quvchini tanlang</option>
+          {% for student in students %}
+            <option value="{{ student.id }}">{{ student.first_name }} {{ student.last_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-add auth-submit">Qo'shish</button>
+
+    </form>
+  </div>
+
+</body>
+</html>
