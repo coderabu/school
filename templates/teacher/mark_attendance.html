@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Davomat belgilash</title>
+  <link rel="stylesheet" href="{% static 'teacher/teacher.css' %}">
+</head>
+<body style="background-color: var(--bg-dark);">
+
+<div class="teacher-layout">
+  <aside class="teacher-sidebar">
+    <div class="sidebar-logo"><span>🛡</span> Clasrom</div>
+    <nav style="display:flex; flex-direction:column; gap:8px;">
+      <a href="{% url 'teacher:student_list' %}" class="nav-link">O'quvchilarim</a>
+      <a href="{% url 'teacher:teacher_page' %}" class="nav-link">Guruhlarim</a>
+      <a href="#" class="nav-link">Fanlarim</a>
+      <a href="{% url 'teacher:mark_attendance' %}" class="nav-link active">Davomat</a>
+      <a href="{% url 'teacher:profile' %}" class="nav-link">Profilim</a>
+    </nav>
+  </aside>
+
+  <main class="teacher-main">
+    <div class="content-card">
+
+      {% if step == 1 %}
+        <!-- BOSQICH 1: Guruh va sanani tanlash -->
+        <h1 class="page-title">Davomat</h1>
+
+        <form method="post" action="{% url 'teacher:mark_attendance' %}">
+          {% csrf_token %}
+
+          <div class="form-group">
+            <label for="date" style="color: var(--muted-light);">Sana:</label>
+            <input type="date" id="date" name="date" required style="background-color: var(--bg-dark); color: white; border: 1px solid var(--muted-light); padding: 8px; border-radius: 6px; width: 100%;">
+          </div>
+
+          <div class="form-group" style="margin-top: 15px;">
+            <label for="group" style="color: var(--muted-light);">Guruh:</label>
+            <select id="group" name="group" required style="background-color: var(--bg-dark); color: white; border: 1px solid var(--muted-light); padding: 8px; border-radius: 6px; width: 100%;">
+              <option value="" disabled selected>Guruhni tanlang</option>
+              {% for g in groups %}
+                <option value="{{ g.pk }}">{{ g.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <button type="submit" name="view" class="btn-primary" style="margin-top: 20px; background-color: var(--green); border-radius: 20px;">
+            Ko'rish
+          </button>
+        </form>
+
+      {% elif step == 2 %}
+        <!-- BOSQICH 2: Davomatni belgilash -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <div>
+            <h1 class="page-title" style="margin-bottom: 5px;">Guruh: {{ group.name }}</h1>
+            <p style="color: var(--muted-light); margin: 0;">Sana: {{ date }}</p>
+          </div>
+          <a href="{% url 'teacher:mark_attendance' %}" class="back-link" style="color: var(--green); text-decoration: none;">← Orqaga</a>
+        </div>
+
+        <form method="post" action="{% url 'teacher:mark_attendance' %}">
+          {% csrf_token %}
+
+          <input type="hidden" name="group" value="{{ group.pk }}">
+          <input type="hidden" name="date" value="{{ date }}">
+
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--muted-light); text-align: left;">
+                <th style="padding: 12px; color: var(--muted-light);">O'quvchi</th>
+                <th style="padding: 12px; text-align: center; color: var(--green);">Keldi</th>
+                <th style="padding: 12px; text-align: center; color: var(--pink);">Kelmadi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for gs in group_students %}
+                <tr style="border-bottom: 1px solid var(--muted-light);">
+                  <td style="padding: 12px; color: white;">
+                    {{ forloop.counter }}. {{ gs.student.first_name }} {{ gs.student.last_name }}
+                  </td>
+                  <td style="padding: 12px; text-align: center;">
+                    <input type="radio" id="present_{{ gs.student.id }}" name="status_{{ gs.student.id }}" value="present" required style="accent-color: var(--green);">
+                  </td>
+                  <td style="padding: 12px; text-align: center;">
+                    <input type="radio" id="absent_{{ gs.student.id }}" name="status_{{ gs.student.id }}" value="absent" style="accent-color: var(--pink);">
+                  </td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="3" style="padding: 20px; text-align: center; color: var(--muted-light);">
+                    Bu guruhda o'quvchilar yo'q
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          {% if group_students %}
+            <button type="submit" name="save" class="btn-primary" style="background-color: var(--green); border-radius: 20px;">
+              Saqlash
+            </button>
+          {% endif %}
+        </form>
+      {% endif %}
+
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

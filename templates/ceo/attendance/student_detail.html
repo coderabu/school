@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ student.first_name }} {{ student.last_name }} — Davomat tarixi</title>
+  <link rel="stylesheet" href="{% static 'ceo/teacher/teacher.css' %}">
+</head>
+<body style="background: var(--navy);">
+
+  <aside class="sidebar">
+    <div class="logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
+    <nav class="nav">
+      <a href="{% url 'accounts:teacher_list' %}" class="nav-item"><span class="dot"></span>O'qituvchi</a>
+      <a href="{% url 'accounts:student' %}" class="nav-item"><span class="dot"></span>O'quvchi</a>
+      <a href="{% url 'groups:subject_list' %}" class="nav-item"><span class="dot"></span>Fan</a>
+      <a href="{% url 'groups:group_list' %}" class="nav-item"><span class="dot"></span>Guruh</a>
+      <a href="{% url 'attendance:group_list' %}" class="nav-item active"><span class="dot"></span>Davomat</a>
+      <a href="#" class="nav-item"><span class="dot"></span>To'lov</a>
+      <a href="#" class="nav-item"><span class="dot"></span>Oylik</a>
+    </nav>
+    <div class="sidebar-foot">© 2026 Clasrom Admin</div>
+  </aside>
+
+  <main class="main">
+    <!-- Orqaga tugmasi va Sarlavha -->
+    <div style="margin-bottom: 24px;">
+      <a href="{% url 'attendance:group_detail' group.pk %}" class="auth-back">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Orqaga
+      </a>
+      <h1 style="color: #fff; font-size: 26px; font-weight: 700; margin-top: 8px;">
+        {{ student.first_name }} {{ student.last_name }} — Davomat tarixi
+      </h1>
+    </div>
+
+    <!-- Student haqida ma'lumot kartasi -->
+    <div class="info-card-dark">
+      <div>
+        <strong>O'quvchi:</strong> {{ student.first_name }} {{ student.last_name }}
+      </div>
+      <div>
+        <strong>Guruh:</strong> {{ group.name }}
+      </div>
+    </div>
+
+    <!-- Sana bo'yicha filter paneli -->
+    <div class="filter-card-dark">
+      <form method="get" class="filter-form-dark">
+        <label for="date">Sana bo'yicha filter:</label>
+        <input type="date" id="date" name="date" value="{{ date }}" class="search-input">
+        <button type="submit" class="btn btn-add" style="padding: 10px 22px; font-size: 14px;">Filter</button>
+        {% if date %}
+          <a href="?" class="clear-link">Filterni tozalash</a>
+        {% endif %}
+      </form>
+    </div>
+
+    <!-- Skalet jadval stili -->
+    <div class="table-container">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th style="width: 60px;">#</th>
+            <th>Sana</th>
+            <th style="text-align: left;">Holat</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for attendance in attendances %}
+            <tr class="table-row">
+              <td class="col-num">{{ forloop.counter }}</td>
+              <td>{{ attendance.date }}</td>
+              <td>
+                {% if attendance.status == 'present' %}
+                  <span class="badge badge-green">Keldi</span>
+                {% elif attendance.status == 'absent' %}
+                  <span class="badge badge-pink">Kelmadi</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="3" style="padding: 0; border: none;">
+                <div class="empty" style="background: var(--navy-soft); color: var(--muted); border-color: rgba(255,255,255,0.15);">
+                  {% if date %}
+                    Bu sana uchun davomat topilmadi
+                  {% else %}
+                    Davomat tarixi yo'q
+                  {% endif %}
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</body>
+</html>g

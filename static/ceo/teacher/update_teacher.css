@@ -107,10 +107,10 @@ body{
 /* ===== EDIT / FORM CARD (Mukammal o'lcham va joylashuv) ===== */
 .auth-card{
   width:100%;
-  max-width:550px;
+  max-width:1700px;
   margin: 0 auto; /* Kartani o'rtaroqqa, chiroyli joylashtiradi */
   border:1.5px solid var(--border);
-  border-radius:20px;
+  border-radius:10px;
   padding:32px;
   background:var(--white);
   box-shadow:0 4px 20px rgba(0, 0, 0, 0.03);

@@ -1,0 +1,175 @@
+/* ==========================================
+   ATTENDANCE GROUP DETAIL - SKALET DESIGN
+   ========================================== */
+
+/* Bosh sahifa va asosiy kontent o'rami */
+body {
+  background-color: var(--navy, #111d33) !important;
+  color: #ffffff;
+}
+
+.main-content {
+  flex: 1;
+  padding: 36px 44px;
+  min-width: 0;
+}
+
+/* Sarlavha qismi */
+.detail-topbar {
+  margin-bottom: 28px;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  transition: color 0.15s ease;
+}
+
+.back-btn:hover {
+  color: #ffffff;
+}
+
+.back-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.detail-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.detail-sub {
+  color: var(--muted, #6b7686);
+  font-size: 14px;
+}
+
+/* ==========================================
+   TABLE SKALET (SKRINSHOTDAGI KABI BLOKLAR)
+   ========================================== */
+
+.skalet-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.skalet-table {
+  width: 100%;
+  border-collapse: separate;
+  /* Qatorlar orasida masofa (skrinshotdagi kabi alohida kartochka qiladi) */
+  border-spacing: 0 12px;
+}
+
+/* Sarlavhalar (TH) */
+.skalet-table th {
+  padding: 10px 20px;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.skalet-table th.center,
+.skalet-table td.center {
+  text-align: center;
+}
+
+/* Har bir qator (SKRINSHOTDAGI KABI RAMKALIK BLOK) */
+.skalet-row {
+  background-color: var(--navy-soft, #18263f);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Qatordagi kataklar */
+.skalet-row td {
+  padding: 16px 20px;
+  color: #ffffff;
+  font-size: 14.5px;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Qatorning chap va o'ng burchaklarini yumaloq qilish va chetini yopish */
+.skalet-row td:first-child {
+  border-left: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  font-weight: 600;
+  color: var(--muted, #6b7686);
+  width: 60px;
+}
+
+.skalet-row td:last-child {
+  border-right: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+/* Sichqoncha olib kelingandagi hover effekti */
+.skalet-row:hover {
+  transform: translateY(-2px);
+}
+
+.skalet-row:hover td {
+  border-color: var(--green, #22c55e);
+}
+
+/* Student ismi linki */
+.student-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.student-link:hover {
+  color: var(--green, #22c55e);
+}
+
+/* Rangli ko'rsatkichlar */
+.text-green {
+  color: var(--green, #22c55e);
+  font-weight: 600;
+}
+
+.text-pink {
+  color: var(--pink, #f87171);
+  font-weight: 600;
+}
+
+/* Percent Badge */
+.percent-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.percent-badge.good {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--green, #22c55e);
+}
+
+.percent-badge.bad {
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--pink, #f87171);
+}
+
+/* Bo'sh xabar uchun */
+.empty-box {
+  background: var(--navy-soft, #18263f);
+  border: 1.5px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  color: var(--muted, #6b7686);
+}

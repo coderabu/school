@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Davomat - Guruhlar</title>
+  <link rel="stylesheet" href="{% static 'ceo/groups/groups.css' %}">
+</head>
+<body style="background-color: var(--bg-dark);">
+
+  <aside class="sidebar">
+    <div class="logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
+    <nav class="nav">
+      <a href="{% url 'accounts:teacher_list' %}" class="nav-item"><span class="dot"></span>O'qituvchi</a>
+      <a href="{% url 'accounts:student' %}" class="nav-item"><span class="dot"></span>O'quvchi</a>
+      <a href="{% url 'groups:subject_list' %}" class="nav-item"><span class="dot"></span>Fan</a>
+      <a href="{% url 'groups:group_list' %}" class="nav-item"><span class="dot"></span>Guruh</a>
+      <a href="{% url 'attendance:group_list' %}" class="nav-item active"><span class="dot"></span>Davomat</a>
+      <a href="#" class="nav-item"><span class="dot"></span>To'lov</a>
+      <a href="#" class="nav-item"><span class="dot"></span>Oylik</a>
+    </nav>
+    <div class="sidebar-foot">© 2026 Clasrom Admin</div>
+  </aside>
+
+  <main class="main">
+    <h1 class="card-title" style="font-size: 24px; margin-bottom: 20px;">Davomat</h1>
+
+    <div class="grid">
+      {% for group in groups %}
+        <a href="{% url 'attendance:group_detail' group.pk %}" style="text-decoration: none; color: inherit;">
+          <div class="card">
+            <div class="card-info">
+              <h2 class="card-title" style="text-transform: uppercase;">{{ group.name }}</h2>
+              <p class="card-text">
+                <strong>O'qituvchi:</strong> {{ group.teacher.first_name }} {{ group.teacher.last_name }}
+              </p>
+              <p class="card-sub">
+                <strong>Fan:</strong> {{ group.subject.name }}
+              </p>
+            </div>
+          </div>
+        </a>
+      {% empty %}
+        <p class="card-text" style="color: var(--muted-light);">Hozircha guruhlar mavjud emas</p>
+      {% endfor %}
+    </div>
+  </main>
+
+</body>
+</html>

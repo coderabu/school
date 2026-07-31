@@ -343,3 +343,166 @@ body{
   border-radius:16px;
   background:#fff;
 }
+/* ===== ATTENDANCE DETAIL TABLE (SKALET STYLES) ===== */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px; /* Qatorlar orasidagi masofa (skrinshotdagi kabi ajratish) */
+}
+
+.custom-table th {
+  padding: 12px 20px;
+  color: #c7d0e0;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.custom-table th:nth-child(3),
+.custom-table th:nth-child(4),
+.custom-table th:nth-child(5) {
+  text-align: center;
+}
+
+/* Har bir qator (Karta shaklida) */
+.table-row {
+  background: var(--navy-soft);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.table-row td {
+  padding: 16px 20px;
+  color: #fff;
+  font-size: 14.5px;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Chetki burchaklarni yumaloq qilish */
+.table-row td:first-child {
+  border-left: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
+.table-row td:last-child {
+  border-right: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+/* Hover effekti */
+.table-row:hover {
+  transform: translateY(-2px);
+}
+.table-row:hover td {
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+/* Ustunlar bo'yicha maxsus uslublar */
+.col-num {
+  font-weight: 600;
+  color: var(--muted);
+  width: 60px;
+}
+
+.col-name a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.col-name a:hover {
+  color: var(--green);
+}
+
+.col-percent, .col-present, .col-absent {
+  text-align: center;
+}
+
+.col-present {
+  color: var(--green);
+  font-weight: 600;
+}
+
+.col-absent {
+  color: var(--pink);
+  font-weight: 600;
+}
+
+/* Foiz badgelari */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.badge-green {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--green);
+}
+
+.badge-pink {
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--pink);
+}
+/* Student info va Filter bloklari uchun moslashuv */
+.info-card-dark {
+  background: var(--navy-soft);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  color: #fff;
+}
+.info-card-dark strong {
+  color: #c7d0e0;
+}
+
+.filter-card-dark {
+  background: var(--navy-soft);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px 24px;
+  margin-bottom: 24px;
+}
+.filter-form-dark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.filter-form-dark label {
+  color: #c7d0e0;
+  font-size: 14px;
+  font-weight: 500;
+}
+.filter-form-dark .search-input {
+  background: var(--navy);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.15);
+  max-width: 200px;
+}
+.filter-form-dark .search-input:focus {
+  border-color: var(--green);
+}
+.clear-link {
+  color: var(--pink);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: opacity 0.15s ease;
+}
+.clear-link:hover { opacity: 0.8; }

@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ group.name }} — Davomat</title>
+  <link rel="stylesheet" href="{% static 'ceo/teacher/teacher.css' %}">
+</head>
+<body style="background: var(--navy);">
+
+<aside class="sidebar">
+  <div class="logo"><span class="shield">🛡</span>Clas<span>rom</span></div>
+  <nav class="nav">
+    <a href="{% url 'accounts:teacher_list' %}" class="nav-item"><span class="dot"></span>O'qituvchi</a>
+    <a href="{% url 'accounts:student' %}" class="nav-item"><span class="dot"></span>O'quvchi</a>
+    <a href="{% url 'groups:subject_list' %}" class="nav-item"><span class="dot"></span>Fan</a>
+    <a href="{% url 'groups:group_list' %}" class="nav-item"><span class="dot"></span>Guruh</a>
+    <a href="{% url 'attendance:group_list' %}" class="nav-item active"><span class="dot"></span>Davomat</a>
+    <a href="#" class="nav-item"><span class="dot"></span>To'lov</a>
+    <a href="#" class="nav-item"><span class="dot"></span>Oylik</a>
+  </nav>
+  <div class="sidebar-foot">© 2026 Clasrom Admin</div>
+</aside>
+
+<main class="main">
+  <!-- Yuqori sarlavha paneli -->
+  <div class="topbar">
+    <div>
+      <a href="{% url 'attendance:group_list' %}" class="auth-back">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Orqaga
+      </a>
+      <h1 style="color: #fff;">{{ group.name }} — Davomat</h1>
+      <p style="color: var(--muted);">O'qituvchi: {{ group.teacher.first_name }} {{ group.teacher.last_name }}</p>
+    </div>
+  </div>
+
+  <!-- Skrinshotdagi kabi alohida qatorli jadval o'rami -->
+  <div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>#.</th>
+          <th>Ism-familiya</th>
+          <th>Umumiy Davomat</th>
+          <th>Kelganlar</th>
+          <th>Kelmaganlar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in students_data %}
+        <tr class="table-row">
+          <td class="col-num">{{ forloop.counter }}</td>
+          <td class="col-name">
+            <a href="{% url 'attendance:student_detail' group.pk item.student.pk %}">
+              {{ item.student.first_name }} {{ item.student.last_name }}
+            </a>
+          </td>
+          <td class="col-percent">
+            {% if item.percent >= 80 %}
+              <span class="badge badge-green">{{ item.percent }}%</span>
+            {% else %}
+              <span class="badge badge-pink">{{ item.percent }}%</span>
+            {% endif %}
+          </td>
+          <td class="col-present">{{ item.present }}</td>
+          <td class="col-absent">{{ item.absent }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="empty">
+            Bu guruhda o'quvchilar yo'q
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</main>
+
+</body>
+</html>

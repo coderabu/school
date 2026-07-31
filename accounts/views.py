@@ -6,7 +6,11 @@ from .forms import LoginForm, AddUserForm, EditTeacherForm
 from .models import User
 
 def main_page(request):
-    return render(request,'main/landing.html')
+    teachers = User.objects.filter(role='teacher')
+    context = {
+        'teachers':teachers
+    }
+    return render(request,'main/landing.html',context)
 
 class LoginView(View):
     def get(self,request):
